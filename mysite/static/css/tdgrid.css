@@ -1,0 +1,35 @@
+.tdgrid{
+    background-color:green;
+    border-right:#f6f6f6 1px solid;
+    border-top:#f9f9f9 1px solid;
+    border-left:#f9f9f9 1px solid;
+    border-bottom:#f5f5f5 1px solid;
+}
+.tdgridBlue{
+    background-color:blue;
+    border-right:#f6f6f6 1px solid;
+    border-top:#f9f9f9 1px solid;
+    border-left:#f9f9f9 1px solid;
+    border-bottom:#f5f5f5 1px solid;
+}
+.tdgrid1{
+    
+    border-right:#f6f6f6 1px solid;
+    border-top:#f9f9f9 1px solid;
+    border-left:#f9f9f9 1px solid;
+    border-bottom:#f5f5f5 1px solid;
+	vertical-align:bottom;
+	text-align:right;
+}
+.tdgrid2{
+    
+    border-right:#f6f6f6 1px solid;
+    border-top:#f9f9f9 1px solid;
+    border-left:#f9f9f9 1px solid;
+    border-bottom:#f5f5f5 1px solid;
+	text-align:right;
+	
+}
+.tdgrid:hover{
+    background-color:grey;
+}

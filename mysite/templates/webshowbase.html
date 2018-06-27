@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <link rel="stylesheet" href="/static/bootstrap3_3_6/css/bootstrap.min.css">
+<link href="/static/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/dashboard.css">
+  <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="/static/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/static/js/ie-emulation-modes-warning.js"></script>
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="/static/js/html5shiv.min.js"></script>
+      <script src="/static/js/respond.min.js"></script>
+    <![endif]-->
+   <!-- Bootstrap -->
+  <script src="/static/js/jquery.min.js"></script>
+  <script src="/static/bootstrap3_3_6/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/static/js/common.js"></script>
+  <script type="text/javascript" src="/static/js/validUtil.js"></script>
+        <title>show</title>
+
+    </head>
+    <body>
+        <!-- 导航栏 -->
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle 导航栏</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Wonders</a>
+        </div>
+
+	<!--定义导航栏内容-->
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="javascript:void(0)">当前时间：<span id="dateString" style="color:yellow"></span></a></li>
+          </ul>
+      </div>
+      </div>
+    </nav>
+
+<div id="" class="container-fluid">
+	<div class="row">
+<!-- 左边栏 -->
+	  <div class="col-sm-2 col-md-2 sidebar" style="background-color:white;">
+		  <ul  class="nav nav-sidebar " style="line-height:5px">
+			<li class="resource toggle" readable="2"><a href="javascript:void(0)"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>smart-AI</a>
+			  <ul class="nav nav-sidebar" style="margin-left:15px;margin-bottom:1px;line-height:5px">
+				<li class="toggle resource"  readable="21"><a style="cursor:hand"><span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>&nbsp&nbsp&nbsp医疗虚拟助手</a>
+				  <ul  class="nav nav-sidebar " style="margin-left:30px;margin-bottom:1px;line-height:5px">
+					<li><a  href="."><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp&nbsp&nbsp命名实体识别</a></li>
+				    <li><a href="fuzhen" style="cursor:hand"><span class="glyphicon glyphicon-file" aria-hidden="true"></span>&nbsp&nbsp&nbsp辅诊</a></li>
+                  </ul>
+				</li>
+				<li class="resource toggle" readable="22" ><a style="cursor:hand"><span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>&nbsp&nbsp&nbsp知识图谱展现</a>
+				  <ul  class="nav nav-sidebar " style="margin-left:30px;margin-bottom:1px;line-height:5px">
+						<li><a href="chelunview"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span>&nbsp&nbsp&nbsp车轮视图展现</a></li>
+						<li><a onclick="chooseRight('hcorderlist')"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>&nbsp&nbsp&nbsp知识检索</a></li>
+				  </ul>
+				</li>
+				<li class="resource toggle" readable="22" ><a style="cursor:hand"><span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>&nbsp&nbsp&nbsp全文检索</a>
+				  <ul  class="nav nav-sidebar " style="margin-left:30px;margin-bottom:1px;line-height:5px">
+						<li><a onclick="chooseRight('persontasklist')"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span>&nbsp&nbsp&nbsp病历全文检索</a></li>
+				  </ul>
+				</li>
+              </ul>
+            </li>
+          </ul>
+      </div>
+<!-- 右边栏 -->
+<div class="col-xs-10 col-xs-offset-2 col-sm-10 col-sm-offset-2 col-md-10 col-md-offset-2 main">
+<div class="row">
+<div class="col-md-12" style="padding:5px 10px;">
+<div class="panel panel-primary" style="margin:0px;">
+{% block content %}content{% endblock %}
+</div>
+<!--E Panel all -->
+</div>
+</div>
+</div>
+    </div>
+
+</div>
+
+        <footer>
+            <p>&copy; Wonders</p>
+        </footer>
+    </body>
+<script>
+
+$(document).ready(function() {
+    $(".toggle>a").bind("click", function () {
+        $(this).next("ul").toggle();
+    });
+})
+	setInterval(function(){
+		var date = new Date();
+		var year = date.getFullYear();
+		var month = date.getMonth()+1;
+		var day = date.getDate();
+		var hour = date.getHours();
+		var minutes = date.getMinutes();
+		var sec = date.getSeconds();
+		if(month < 10){
+			month = "0" + month;
+		}
+		if(day < 10){
+			day = "0" + day;
+		}
+		if(hour < 10){
+			hour = "0" + hour;
+		}
+		if(minutes < 10){
+			minutes = "0" + minutes;
+		}
+		if(sec < 10){
+			sec = "0" + sec;
+		}
+
+		var dateStr = year + "-" + month + "-" + day +" "+ hour +":"+ minutes + ":"  + sec +"     ";
+		$("#dateString").html(dateStr);
+	},1000);
+
+
+	function closeWindow(){
+		if(window.confirm("确认离开该页面吗？")){
+			window.open('','_self','')
+			window.close();
+		}
+
+	}
+</script>
+</html>

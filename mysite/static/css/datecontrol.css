@@ -1,0 +1,47 @@
+﻿
+.date-picker-wp{
+	border: solid 4px #433F40;
+}
+
+.date-picker-wp table {
+border: 0px solid #433F40;
+background: #FFFFFF;
+}
+
+.date-picker-wp td {
+
+	background: #fafafa;
+
+	width: 22px;
+
+	height: 18px;
+
+	border: 1px solid #ccc;
+
+	font-size: 12px;
+
+	text-align: center;
+
+}
+.date-picker-wp tr {
+	border: none;
+}
+
+.date-picker-wp td.noborder {
+	border: none;
+	background: none;
+}
+.date-picker-wp td.week {
+	border: none;
+	background-color: #2E9CD0;
+	color:#C9CACA;
+}
+
+.date-picker-wp td a {
+	color: #1c93c4;
+	text-decoration: none;
+}
+
+.strong {font-weight: bold}
+.cursorhand {cursor: pointer; color: #28A7E1}
+.hand {cursor: pointer; color: #575757}

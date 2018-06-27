@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+    ul { display: inline-block; }
+</style>
+<h3>系统登录</h3>
+<form action="" method="post">{% csrf_token %}
+    {{ form.non_field_errors }}
+    <div style="margin:0 0 20px 0;">
+        <input type="text"  placeholder="请输入用户名" id="username" name="username">
+        {{ form.username.errors }}
+    </div>
+    <div style="margin:20px 0;">
+        <input type="password"  placeholder="请输入密码" id="password" name="password">
+        {{ form.password.errors }}
+    </div>
+    <div >
+        <input id="submit" type="submit"  value="登录">
+    </div>
+</form>
+{% endblock %}

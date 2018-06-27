@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <link rel="stylesheet" href="/static/bootstrap3_3_6/css/bootstrap.min.css">
+<link href="/static/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/dashboard.css">
+  <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="/static/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/static/js/ie-emulation-modes-warning.js"></script>
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="/static/js/html5shiv.min.js"></script>
+      <script src="/static/js/respond.min.js"></script>
+    <![endif]-->
+   <!-- Bootstrap -->
+  <script src="/static/js/jquery.min.js"></script>
+  <script src="/static/bootstrap3_3_6/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/static/js/common.js"></script>
+  <script type="text/javascript" src="/static/js/validUtil.js"></script>
+  <script type="text/javascript" src="/static/js/pagination.js"></script>
+	<link rel="stylesheet" href="/static/css/pagination.css" />
+
+
+        <title>mysite</title>
+
+    </head>
+    <body>
+        <!-- 导航栏 -->
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle 导航栏</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">XXX任务系统</a>
+        </div>
+
+	<!--定义导航栏内容-->
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+			<li><a class='glyphicon glyphicon-flag' onclick="chooseRight('DQtask')" style="color:red"></a><input id="ctcode" type="text" style="display:none;"></li>
+            <li><a style='margin-left:-25px;'  style="cursor:hand">当前任务：<span id="currentPlan" style="color:yellow"></span><span id="planState" class="text-primary"></span></a></li>
+            <!--li><a onclick="" style="cursor:hand">当前波次：<span id="currentOrder" style="color:yellow">无</span><span id="orderState" class="text-primary"></span></a></li-->
+            <li id="planState"><a href="javascript:void(0)" onclick="OnPlanFinish()" class="btn btn-warning"><span style="font-size:14px;font-weight:bold;color:white" id="planStateContent">计划提交</span>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-share-alt" aria-hidden="true" style="color:green;font-size:18px"></span></a></li>
+            <li><a href="javascript:void(0)" style="cursor:text">用户：<span style="color:yellow">${sessionScope.username}</span></a></li>
+            <li style="display:none"><a href="javascript:void(0)"><span id="userrole" >${sessionScope.userrole}</span></a></li>
+            <li><a href="#">退出</a></li>
+            <li><a onclick="history.go(-1)" title="回到上一页" style="cursor:hand"><span class="glyphicon glyphicon-hand-left"  style="color:yellow" aria-hidden="true"></span></a></li>
+            <li><a onclick="closeWindow()" title="离开" style="cursor:hand"><span class="glyphicon glyphicon-log-out" aria-hidden="true" style="color:red"></span></a></li>
+            <li><a href="javascript:void(0)">当前时间：<span id="dateString" style="color:yellow"></span></a></li>
+          </ul>
+      </div>
+      </div>
+    </nav>
+
+	<div class="modal fade" id="modifyPasswordDialog" tabindex="-1" role="dialog" aria-labelledby="modaldialog">
+	<div class="modal-dialog">
+	<div class="modal-content">
+	<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	<h4 class="modal-title" id="modaltitle">修改密码</h4>
+	</div>
+
+	<div class="col-md-12" style="margin:5px auto;">
+	<div class="input-group">
+		<label class="input-group-addon">用户名</label>
+		<input class="form-control" id="userName" type="text"  maxlength="40"/>
+	</div>
+	</div>
+	<div class="col-md-12" style="margin:5px auto;">
+	<div class="input-group">
+		<label class="input-group-addon">原密码</label>
+		<input class="form-control" id="modifyPasswordDialog_id" type="text"  style="display:none"/>
+		<input class="form-control" id="modifyPasswordDialog_oldPassword" type="password"  maxlength="40"/>
+	</div>
+	</div>
+	<div class="col-md-12" style="margin:5px auto;">
+	<div class="input-group">
+			<label class="input-group-addon">新密码</label>
+			<input class="form-control" id="modifyPasswordDialog_newPassword" type="password" maxlength="40"/>
+	</div>
+	</div>
+	<div class="col-md-12" style="margin:5px auto;">
+	<div class="input-group">
+			<label   class="input-group-addon">重复新密码</label>
+			<input class="form-control" id="modifyPasswordDialog_newPassword2" type="password" maxlength="40"/>
+		</div>
+	</div>
+	<div class="modal-footer">
+	<center>
+	<button type="button" onclick="save()"  class="btn btn-primary">确定</button>
+	<button type="button"  class="btn btn-primary"  data-dismiss="modal" >取消</button>
+	</center>
+	</div>
+	</div>
+	</div>
+	</div>
+<div id="" class="container-fluid">
+	<div class="row">
+<!-- 左边栏 -->
+	  <div class="col-sm-2 col-md-2 sidebar" style="background-color:white;">
+          <!-- <object style="border:0px" type="text/xscriptlet" data="sidebar.html" width=100%/> -->
+		  <!-- <iframe name="content_frame" width=100% marginwidth=0 marginheight=0 src="sidebar.html"/> -->
+		  <ul  class="nav nav-sidebar " style="line-height:5px">
+			<li class="resource toggle" readable="2"><a href="javascript:void(0)"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>人员换乘</a>
+			  <ul class="nav nav-sidebar" style="margin-left:15px;margin-bottom:1px;line-height:5px">
+				<li class="toggle resource"  readable="21"><a style="cursor:hand"><span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>&nbsp&nbsp&nbsp基础数据</a>
+				  <ul  class="nav nav-sidebar " style="margin-left:30px;margin-bottom:1px;line-height:5px">
+					<li><a  href="javascript:void(0)" onclick="chooseRight('staffinfomg')"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp&nbsp&nbsp换乘人员信息</a></li>
+				    <li><a onclick="chooseRight('HCroutemanagement')" style="cursor:hand"><span class="glyphicon glyphicon-file" aria-hidden="true"></span>&nbsp&nbsp&nbsp换乘路线</a></li>
+                  </ul>
+				</li>
+				<li class="resource toggle" readable="22" ><a style="cursor:hand"><span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>&nbsp&nbsp&nbsp任务信息</a>
+				  <ul  class="nav nav-sidebar " style="margin-left:30px;margin-bottom:1px;line-height:5px">
+						<li><a onclick="chooseRight('persontasklist')"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span>&nbsp&nbsp&nbsp任务一览</a></li>
+						<li><a onclick="chooseRight('hcorderlist')"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>&nbsp&nbsp&nbsp波次信息</a></li>
+				  </ul>
+				</li>
+              </ul>
+            </li>
+          </ul>
+      </div>
+<!-- 右边栏 -->
+<div class="col-xs-10 col-xs-offset-2 col-sm-10 col-sm-offset-2 col-md-10 col-md-offset-2 main">
+<div class="row">
+<div class="col-md-12" style="padding:5px 10px;">
+<div class="panel panel-primary" style="margin:0px;">
+<div class="panel-heading" style="font-size:20px;">换乘计划</div>
+<div class="panel-body">
+<table class="col-md-12">
+<tr>
+<td>
+<!--S 按钮组-->
+<div class="">
+<div class="btn-group" role="group" aria-label="添加|删除">
+<button type="button" id="btnaddnew" class="btn btn-primary" data-toggle="modal" data-keyboard="false" data-backdrop="static" onclick="OnAddNew(this);" readable="232">添加</button>
+<button type="button" id="btndel" class="btn btn-primary" data-toggle="modal" data-keyboard="false" data-backdrop="static" onclick="OnDelete();" readable="233">删除</button>
+</div>
+</div>
+<!--E 按钮组-->
+</td>
+<td>
+<!--S 查找框组-->
+<div style="float:right" readable="234">
+<div class="input-group">
+<span id="optionSearch" class="input-group-btn">
+<button type="button" id="btncondition" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">查找条件<span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right">
+<li><a href="javascript:void(0)">人员</a></li>
+<li><a href="javascript:void(0)">波次</a></li>
+<li><a href="javascript:void(0)">装备名称</a></li>
+<li><a href="javascript:void(0)">装备容量</a></li>
+<li><a href="javascript:void(0)">装备编码</a></li>
+</ul>
+</span>
+<input type="text" id="txtSearch" class="form-control" aria-label="查找关键字" placeholder="查找关键字">
+<span class="input-group-btn">
+<button type="button" id="btnsearch" class="btn btn-primary" onclick="OnSearch();">查找</button>
+</span>
+</div>
+</div>
+<!--E 查找框组-->
+</td>
+</tr>
+</table>
+<!--S 表格显示 -->
+<table  id="tblinfo" class="col-md-12 table table-bordered table-hover text-center table-striped" style="margin-top:15px;">
+<thead>
+<tr class="info">
+<th class="text-center"><input type="checkbox" id="checkedAll"></th>
+<th class="text-center">序号</th>
+<th class="text-center">人员</th>
+<th class="text-center">波次</th>
+<th class="text-center">装备名称</th>
+<th class="text-center">装备容量</th>
+<th class="text-center">装备编码</th>
+<th id="control" class="text-center">操作</th>
+</tr>
+</thead>
+<tbody id="tblist_body">
+{% block content %}content{% endblock %}
+</tbody>
+</table>
+<nav class="col-md-12" style="margin-bottom:10px;"><ul id="Pagination" class="pagination"  style="padding:0px; margin:0px;"></ul></nav>
+<!--E 表格显示 -->
+</div>
+<!--E Panel body -->
+<!--div class="panel-footer">&nbsp;&nbsp;&nbsp;</div-->
+</div>
+<!--E Panel all -->
+</div>
+</div>
+</div>
+    </div>
+
+</div>
+
+        <footer>
+            <p>&copy; Wonders</p>
+        </footer>
+    </body>
+<script>
+
+$(document).ready(function() {
+    $(".toggle>a").bind("click", function () {
+        $(this).next("ul").toggle();
+    });
+})
+	function findPlanState(){
+		$.post("json/orderList!findDyOrderState.action",
+			{
+				planType:3
+			},
+			function(data){
+//				alert(data.msg);
+				if(data.taskState==0 || data.taskState==3){
+					$("#planStateContent").html("计划提交")
+//					$("#planState").html('<a href="javascript:void(0)" onclick="OnPlanFinish()" class="btn btn-warning"><span style="font-size:14px;font-weight:bold;color:white" id="planStateContent">计划提交</span>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-share-alt" aria-hidden="true" style="color:green;font-size:18px"></span></a>')
+
+				}else{
+					if(data.taskState==1){
+						$("#planStateContent").html("计划编制完成")
+//						$("#planState").html('<a href="javascript:void(0)" class="btn btn-warning"><span style="font-size:14px;font-weight:bold;color:white" id="planStateContent" disabled>计划提交</span>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-share-alt" aria-hidden="true" style="color:green;font-size:18px"></span></a>')
+
+					}else if(data.taskState==2){
+						$("#planStateContent").html("计划审核通过")
+//						$("#planState").html('<a href="javascript:void(0)" class="btn btn-warning"><span style="font-size:14px;font-weight:bold;color:white" id="planStateContent" disabled>计划提交</span>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-share-alt" aria-hidden="true" style="color:green;font-size:18px"></span></a>')
+
+					}else if(data.taskState==4){
+						$("#planStateContent").html("计划已下发")
+//						$("#planState").html('<a href="javascript:void(0)" class="btn btn-warning"><span style="font-size:14px;font-weight:bold;color:white" id="planStateContent" disabled>计划提交</span>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-share-alt" aria-hidden="true" style="color:green;font-size:18px"></span></a>')
+
+					}else{
+						$("#planStateContent").html("计划提交")
+					}
+				}
+			}
+			);
+	}
+	$("document").ready(function(){
+			findPlanState()
+	});
+
+	function OnPlanFinish(){
+		if($("#planStateContent").html()=="计划提交"){
+			if(confirm("确定上传任务计划吗？")){
+				$.post("json/orderList!setDyOrderState.action",
+						{
+							planType:3
+						},
+						function(data){
+							alert(data.msg);
+							$("#planStateContent").html("计划编制完成")
+	// 						$("#btnaddnew").css("display", "none");
+	// 						$("#btndel").css("display", "none");
+	// 						$("#btnprint").css("display", "none");
+	// 						$("#btnfinsh").css("display", "none");
+						}
+				);
+			}
+		}else{
+				alert("计划已提交，无法修改！")
+		}
+	}
+
+	setInterval(function(){
+		var date = new Date();
+		var year = date.getFullYear();
+		var month = date.getMonth()+1;
+		var day = date.getDate();
+		var hour = date.getHours();
+		var minutes = date.getMinutes();
+		var sec = date.getSeconds();
+		if(month < 10){
+			month = "0" + month;
+		}
+		if(day < 10){
+			day = "0" + day;
+		}
+		if(hour < 10){
+			hour = "0" + hour;
+		}
+		if(minutes < 10){
+			minutes = "0" + minutes;
+		}
+		if(sec < 10){
+			sec = "0" + sec;
+		}
+
+		var dateStr = year + "-" + month + "-" + day +" "+ hour +":"+ minutes + ":"  + sec +"     ";
+		$("#dateString").html(dateStr);
+	},1000);
+
+	function save(){
+					var pid=$("#modifyPasswordDialog_id").val();
+					var oldPassword=$("#modifyPasswordDialog_oldPassword").val();
+					var newPassword=$("#modifyPasswordDialog_newPassword").val();
+					var newPassword2=$("#modifyPasswordDialog_newPassword2").val();
+					if(oldPassword=="" || newPassword=="" || newPassword2=="" ) {
+						alert("密码不能为空！");
+						return;
+					}
+					if(newPassword!=newPassword2){
+						alert("新密码不一致！");
+						return;
+					} alert($("#userName").val());
+					if($("#userName").val()==""||$("#userName").val()==null){
+						alert("用户名不能为空！");
+						return;
+					}
+					$.post("json/login!validName.action",
+							{
+								username:$("#userName").val(),
+							},
+							function(data){
+								if(data.msg=="false"){
+								$.post("json/login!changePassword.action",
+								{
+									id:pid,
+									username:$("#userName").val(),
+									password:oldPassword,
+									newPassword:newPassword
+								},
+								function(data){
+									alert(data.msg);
+									if(data.success){
+										$("#modifyPasswordDialog").modal("hide");
+									}
+								});
+								}
+								else{
+									alert("用户名已存在!");
+								}
+							});
+
+	}
+
+	function openModifyPasswordDialog(userid){
+		$("#modifyPasswordDialog_id").val(userid);
+		$("#modifyPasswordDialog_oldPassword").val("");
+		$("#modifyPasswordDialog_newPassword").val("");
+		$("#modifyPasswordDialog_newPassword2").val("");
+		$("#modifyPasswordDialog").modal("show");
+
+	}
+
+	function chooseRight(val){
+		window.location.href="left.action?val="+val;
+	}
+	function closeWindow(){
+		if(window.confirm("确认离开该页面吗？")){
+			window.open('','_self','')
+			window.close();
+		}
+
+	}
+</script>
+</html>

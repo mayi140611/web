@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="post" action="{% url 'register' %}">{% csrf_token %}
+    <div class="form-group">
+        <label for="sex">账号（手机号）：</label>
+        <input type="text" id="phone" name="phone" />
+    </div>
+    <div class="form-group">
+        <label for="sex">短信验证码：</label>
+        <input type="text" id="message" name="message" />
+        <input type="button"  value="发送短信验证码" onclick="sendMessage(this)">
+    </div>
+    <div class="form-group">
+        <label for="sex">密码：</label>
+        <input type="password" id="pw" name="pw" />
+    </div>
+    <div class="form-group">
+        <label for="sex">确认密码：</label>
+        <input type="password" id="repw" name="repw" />
+    </div>
+    <div class="form-group">
+        <input type="submit"  name="提交" />
+    </div>
+</form>
+<script>
+    function t(o) {
+        //o.disabled = false
+        alert('111')
+    }
+    function sendMessage(o) {
+        alert('验证码为：1234。1分钟后可再次发送');
+        o.disabled = true;
+        setTimeout(function () {
+            o.disabled = false
+        }, 60000);
+    }
+</script>
+
+{% endblock %}

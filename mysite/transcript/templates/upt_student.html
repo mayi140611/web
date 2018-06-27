@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="post" action="{% url 'upt_student' obj.sn %}">{% csrf_token %}
+    <div class="form-group">
+        <label for="sex">学号：</label>
+        <input type="text" id="sn" name="sn" value="{{obj.sn}}" readonly="True"/>
+    </div>
+    <div class="form-group">
+        <label for="name">姓名：</label>
+        <input type="text" id="name" name="name" value="{{obj.name}}"/>
+    </div>
+    <div class="form-group">
+        <label for="sex">性别：</label>
+        <select id="sex" name="sex">
+            <option value="1">男</option>
+            <option value="2">女</option>
+            <option value="3">其他</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="age">年龄：</label>
+        <input type="text" id="age" name="age" value="{{obj.age}}"/>
+    </div>
+    <div class="form-group">
+        <label for="phone">手机号：</label>
+        <input type="text" id="phone" name="phone" value="{{obj.phone}}"/>
+    </div>
+    <input type="submit" value="提交">
+</form>
+{% endblock %}

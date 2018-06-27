@@ -1,0 +1,72 @@
+{% load transcripttags %}
+<!DOCTYPE html>
+<html lang="zh-hans">
+    <head>
+        <meta charset="utf-8">
+        <title>mysite</title>
+    </head>
+    <body>
+        <h1>查找</h1>
+        <form method="post" action="{% url 'list_student'%}">{% csrf_token %}
+            <div class="form-group">
+                <label for="sex">条件：</label>
+                <select id="condition" name="condition">
+                    <option value="sn">学号</option>
+                    <option value="name">姓名</option>
+                    <option value="phone">手机号</option>
+                </select>
+                <input type="text" id="content" name="content"/>
+                <input type="submit" value="查找">
+            </div>
+
+        </form>
+        <h1>上传成绩单</h1>
+        <form method="post" action="{% url 'upload_file'%}"  enctype="multipart/form-data">{% csrf_token %}
+            <input name="file" type="file" ><input type="submit" value="上传成绩单">
+
+        </form>
+        <h1>学生列表</h1>
+
+        <table border="1" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>学号</th>
+                    <th>姓名</th>
+                    <th>性别</th>
+                    <th>年龄</th>
+                    <th>手机号</th>
+                    <th>成绩单</th>
+                    <th>添加时间</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for obj in objs %}
+                <tr>
+                    <td>{{obj.sn}}</td>
+                    <td>{{obj.name}}</td>
+                    <td>{{obj.get_sex_display}}</td>
+                    <td>{{obj.age|add:2}}</td>
+                    <td>{{obj.phone|format_phone}}</td>
+                    <td><a href="{% url 'list_grade' obj.sn %}">查看成绩单</a></td>
+                    <td>{{obj.add_time}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <div class="pagination">
+                <span class="step-links">
+                    {% if objs.has_previous %}
+                        <a href="?page={{ objs.previous_page_number }}">上一页</a>
+                    {% endif %}
+
+                    <span class="current">
+                        第 {{ objs.number }} 页  共 {{ objs.paginator.num_pages }} 页
+                    </span>
+
+                    {% if objs.has_next %}
+                        <a href="?page={{ objs.next_page_number }}">下一页</a>
+                    {% endif %}
+                </span>
+            </div>
+        </table>
+    </body>
+</html>

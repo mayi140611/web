@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+    <head>
+        <meta charset="utf-8">
+        <title>mysite</title>
+        <style type="text/css">
+          header, footer {
+            background: green;
+          }
+
+          #container {
+            margin: 10px;
+            padding: 10px;
+          }
+
+          .form-group {
+            margin-top: 5px;
+          }
+        </style>
+    </head>
+    <body>
+        <header>
+            学生成绩管理系统
+        </header>
+        <div id="container">
+            {% block content %}content{% endblock %}
+        </div>
+        <footer>
+            <p>&copy; 2018 Web全栈开发理论与实践</p>
+        </footer>
+    </body>
+</html>

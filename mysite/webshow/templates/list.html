@@ -1,0 +1,89 @@
+{% extends "webshowbase.html" %}
+{% block content %}
+<div class="panel-heading" style="font-size:20px;">EMR命名实体识别</div>
+<div class="panel-body">
+<table class="col-md-12">
+<tr>
+<td>
+</td>
+<td>
+</td>
+</tr>
+</table>
+<div class="row">
+  <div class="col-lg-6">
+    <div class="input-group">
+{#      <input type="text" class="form-control" placeholder="Search for..." id="content1" rows="3">#}
+        <textarea class="form-control" rows="3" placeholder="Search for..." id="content1"></textarea>
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button", onclick="sendText()">Go!</button>
+      </span>
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
+<!--S 表格显示 -->
+<table  id="tblinfo" class="col-md-12 table table-bordered table-hover text-center table-striped" style="margin-top:15px;">
+<thead>
+<tr class="info">
+<th class="text-center">序号</th>
+<th class="text-center">实体类别</th>
+<th class="text-center">实体</th>
+</tr>
+</thead>
+<tbody id="tblist_body">
+
+</tbody>
+</table>
+<nav class="col-md-12" style="margin-bottom:10px;"><ul id="Pagination" class="pagination"  style="padding:0px; margin:0px;"></ul></nav>
+<!--E 表格显示 -->
+</div>
+<!--E Panel body -->
+<!--div class="panel-footer">&nbsp;&nbsp;&nbsp;</div-->
+<script>
+    function sendText(){
+
+		$.post("ner",
+			{
+				content: $('#content1').val(),
+                'csrfmiddlewaretoken': '{{ csrf_token }}',
+			},
+			function(data){
+		        $("#tblist_body").html("")
+		        var mm = '{"o": "o", "b": "疾病", "jx": "畸形", "jc": "异常检查", "m": "医疗设备", "qt": "其他治疗", "w": "部位", "s": "受伤", "t": "查体", "x": "细菌、病毒", "yc": "异常体征", "yw": "药物", "zs": "自诉症状", "zl": "治疗过程", "1b": "疾病(-)", "2b": "疾病(家族成员)", "3b": "疾病(有条件的)", "4b": "疾病(可能的)", "5b": "疾病(待证实的)", "6b": "疾病(偶有的)", "7b": "疾病(既往史)", "1jx": "畸形(-)", "2jx": "畸形(家族成员)", "3jx": "畸形(有条件的)", "4jx": "畸形(可能的)", "5jx": "畸形(待证实的)", "6jx": "畸形(偶有的)", "7jx": "畸形(既往史)", "1jc": "异常检查(-)", "2jc": "异常检查(家族成员)", "3jc": "异常检查(有条件的)", "4jc": "异常检查(可能的)", "5jc": "异常检查(待证实的)", "6jc": "异常检查(偶有的)", "7jc": "异常检查(既往史)", "1m": "医疗设备(-)", "2m": "医疗设备(家族成员)", "3m": "医疗设备(有条件的)", "4m": "医疗设备(可能的)", "5m": "医疗设备(待证实的)", "6m": "医疗设备(偶有的)", "7m": "医疗设备(既往史)", "1qt": "其他治疗(-)", "2qt": "其他治疗(家族成员)", "3qt": "其他治疗(有条件的)", "4qt": "其他治疗(可能的)", "5qt": "其他治疗(待证实的)", "6qt": "其他治疗(偶有的)", "7qt": "其他治疗(既往史)", "1w": "部位(-)", "2w": "部位(家族成员)", "3w": "部位(有条件的)", "4w": "部位(可能的)", "5w": "部位(待证实的)", "6w": "部位(偶有的)", "7w": "部位(既往史)", "1s": "受伤(-)", "2s": "受伤(家族成员)", "3s": "受伤(有条件的)", "4s": "受伤(可能的)", "5s": "受伤(待证实的)", "6s": "受伤(偶有的)", "7s": "受伤(既往史)", "1t": "查体(-)", "2t": "查体(家族成员)", "3t": "查体(有条件的)", "4t": "查体(可能的)", "5t": "查体(待证实的)", "6t": "查体(偶有的)", "7t": "查体(既往史)", "1x": "细菌、病毒(-)", "2x": "细菌、病毒(家族成员)", "3x": "细菌、病毒(有条件的)", "4x": "细菌、病毒(可能的)", "5x": "细菌、病毒(待证实的)", "6x": "细菌、病毒(偶有的)", "7x": "细菌、病毒(既往史)", "1yc": "异常体征(-)", "2yc": "异常体征(家族成员)", "3yc": "异常体征(有条件的)", "4yc": "异常体征(可能的)", "5yc": "异常体征(待证实的)", "6yc": "异常体征(偶有的)", "7yc": "异常体征(既往史)", "1yw": "药物(-)", "2yw": "药物(家族成员)", "3yw": "药物(有条件的)", "4yw": "药物(可能的)", "5yw": "药物(待证实的)", "6yw": "药物(偶有的)", "7yw": "药物(既往史)", "1zs": "自诉症状(-)", "2zs": "自诉症状(家族成员)", "3zs": "自诉症状(有条件的)", "4zs": "自诉症状(可能的)", "5zs": "自诉症状(待证实的)", "6zs": "自诉症状(偶有的)", "7zs": "自诉症状(既往史)", "1zl": "治疗过程(-)", "2zl": "治疗过程(家族成员)", "3zl": "治疗过程(有条件的)", "4zl": "治疗过程(可能的)", "5zl": "治疗过程(待证实的)", "6zl": "治疗过程(偶有的)", "7zl": "治疗过程(既往史)"}'
+                var mmj = JSON.parse(mm);
+		        count = 1
+		        for (a in data){
+		            s = "aa"
+		            if(data[a].length > 0){
+		                {#alert(mmj)#}
+		                s  = "<tr><td>"+count+"</td><td>"+mmj[a]+"</td><td>"+data[a].toString()+"</td></tr>"
+                        count += 1
+                        $("#tblist_body").append(s)
+                    }
+                }
+{#//				alert(data.msg);#}
+{#				if(data.taskState==0 || data.taskState==3){#}
+{#					$("#planStateContent").html("计划提交")#}
+{#//					$("#planState").html('<a href="javascript:void(0)" onclick="OnPlanFinish()" class="btn btn-warning"><span style="font-size:14px;font-weight:bold;color:white" id="planStateContent">计划提交</span>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-share-alt" aria-hidden="true" style="color:green;font-size:18px"></span></a>')#}
+{##}
+{#				}else{#}
+{#					if(data.taskState==1){#}
+{#						$("#planStateContent").html("计划编制完成")#}
+{#//						$("#planState").html('<a href="javascript:void(0)" class="btn btn-warning"><span style="font-size:14px;font-weight:bold;color:white" id="planStateContent" disabled>计划提交</span>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-share-alt" aria-hidden="true" style="color:green;font-size:18px"></span></a>')#}
+{##}
+{#					}else if(data.taskState==2){#}
+{#						$("#planStateContent").html("计划审核通过")#}
+{#//						$("#planState").html('<a href="javascript:void(0)" class="btn btn-warning"><span style="font-size:14px;font-weight:bold;color:white" id="planStateContent" disabled>计划提交</span>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-share-alt" aria-hidden="true" style="color:green;font-size:18px"></span></a>')#}
+{##}
+{#					}else if(data.taskState==4){#}
+{#						$("#planStateContent").html("计划已下发")#}
+{#//						$("#planState").html('<a href="javascript:void(0)" class="btn btn-warning"><span style="font-size:14px;font-weight:bold;color:white" id="planStateContent" disabled>计划提交</span>&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-share-alt" aria-hidden="true" style="color:green;font-size:18px"></span></a>')#}
+{##}
+{#					}else{#}
+{#						$("#planStateContent").html("计划提交")#}
+{#					}#}
+{#				}#}
+			});
+	}
+</script>
+{% endblock %}
