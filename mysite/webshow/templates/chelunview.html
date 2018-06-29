@@ -63,11 +63,15 @@
         var nodesstr = ["症状", "药品", "疾病", "糖尿病","多饮","多尿","多食","内分泌科","糖尿病肾病","糖脉康颗粒","","","","","",""]
         //category用于对node进行分类，直观的表现是不同的分类的颜色会不同。默认的编码是0
         var categories = [];
-        for (var i = 0; i < 9; i++) {
-            categories[i] = {
-                name: '类目' + i
-            };
-        }
+        categories[0] = {name: '目标实体'};
+        categories[1] = {name: '顶层概念'};
+        categories[2] = {name: '症状'};
+        categories[3] = {name: '科室'};
+        categories[4] = {name: '疾病'};
+        categories[5] = {name: '部位'};
+        categories[6] = {name: '药品'};
+        categories[7] = {name: '检查'};
+        categories[8] = {name: '治疗方法'};
         var nodes = [{'id':0, 'name':"症状", 'category':1,'draggable':true},
             {'id':1, 'name':"药品", 'category':1,'draggable':true},
             {'id':2, 'name':"疾病", 'category':1,'draggable':true},
@@ -207,10 +211,12 @@
                     },
                 }
             },
-            legend: {
-                x: "center",
-                show: false
-            },
+            legend: [{
+                // selectedMode: 'single',
+                data: categories.map(function (a) {
+                    return a.name;
+                })
+            }],
             series: [
 
                 {
