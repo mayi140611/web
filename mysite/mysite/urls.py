@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.contrib.auth.views import login
+# from django.contrib.auth.views import login
 
 
 from . import views
@@ -24,10 +24,11 @@ from transcript import views as v
 
 urlpatterns = [
     path('register/', views.register, name='register'),
-    path('accounts/login/', login, {'template_name': 'login.html'}, name='login'),
+#     path('accounts/login/', login, {'template_name': 'login.html'}, name='login'),
     path('accounts/profile/', v.list_student, name='list_student'),
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('transcript/', include('transcript.urls')),
     path('webshow/', include('webshow.urls')),
+    path('daozhen/', include('daozhen.urls')),
 ]

@@ -25,7 +25,7 @@ SECRET_KEY = 'i3tjmjrmqs456p6_9d&8a$x40b*56l((r3e^38#n7pl)o82lr4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['10.1.192.118','h1']
 
 
 # Application definition
@@ -39,13 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'transcript',
     'webshow',
+    'daozhen',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -88,7 +89,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mysite',
         'USER': 'root',
-        'PASSWORD': '123456',
+        'PASSWORD': '!Aa123456',
         'HOST': 'localhost',
         'PORT': '3306',
         #'OPTIONS': {'charset': 'utf8'},
