@@ -55,4 +55,19 @@ def zz2zz(request):
                  "body":{"result":l1[index:(index+5)]},
             }
         return HttpResponse(json.dumps(d, ensure_ascii=False), content_type="application/json; charset=utf-8")
+    
+def zz2ks(request):
+    if request.method == 'POST':
+        p = json.loads(request.body.decode())
+        index = int(p['body']['questions'])
+        zzlist = p['body']['zzlist']
+        l1= model.zz2ks(zzlist)
+        d =  {
+                "head":{
+                     "code":1,
+                    "msg":"success"
+                },
+                 "body":{"result":dict(l1[:3])},
+            }
+        return HttpResponse(json.dumps(d, ensure_ascii=False), content_type="application/json; charset=utf-8")
       

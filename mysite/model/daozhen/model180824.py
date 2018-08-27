@@ -13,6 +13,7 @@ from utils.pandas_wrapper import pandas_wrapper as pdw
 from utils.pandas.dataframe_wrapper import dataframe_wrapper as dfw
 from utils.nlp.nlp_wrapper import nlp_wrapper as nlpw
 import re
+from math import sqrt
 
 class model_wrapper(object):
     def __init__(self): 
@@ -28,6 +29,12 @@ class model_wrapper(object):
         self._pattern = re.compile(r'|'.join(self._buweilist))
         self._pmw = pmw()
         self._zztable = self._pmw.get_collection('jiankang39', 'zznew')
+        self._distable = self._pmw.get_collection('jiankang39','diseases')
+        self._ksdicts = pkw.loadfromfile('/home/ian/code/data/daozhen/ksdict.pkl')
+        self._zzseries = pkw.loadfromfile('/home/ian/code/data/daozhen/zzseries.pkl')
+        self._disseries = pkw.loadfromfile('/home/ian/code/data/daozhen/disseries.pkl')
+        self._diszzmatr = pkw.loadfromfile('/home/ian/code/data/daozhen/diszzmatr.pkl')
+        self._zzseries_inv = pkw.loadfromfile('/home/ian/code/data/daozhen/zzseries_inv.pkl')
     def get_buwei(self, s):
         '''
         从一个描述中得到部位
@@ -134,3 +141,70 @@ class model_wrapper(object):
 #                     z = [(self._zzshared_series[i],i) for i in l1 if self._zzshared_series[i] in zz1]
                     return z,a
         return [],[]
+    
+    def cal_cos_similarity(self,a1,a2):
+        a = a1.dot(a2)
+        b = a1.dot(a1)
+        c = a2.dot(a2)
+        if b == 0 or c==0:
+            return 0
+        return a/sqrt( b*c )
+    #输出可能的疾病和概率
+    def zz2disease(self, zzs,gender='男',age='4',other='普通'):
+        zzseries = self._zzseries
+        disseries = self._disseries
+        zzseries_inv = self._zzseries_inv
+        diszzmatr = self._diszzmatr
+        genderdict = {'男':0,'女':1}
+        otherdict = {'普通':[0],'孕期':[1],'产褥期':[2],'孕妇及产褥期':[1,2]}
+        gender = genderdict[gender]
+        other = otherdict[other]
+        temp = npw.build_zeros_array((1,len(zzseries)))[0]
+        for i in zzs:
+            temp[zzseries_inv[i]] = 1
+        l1 = list()
+        for i in range(len(disseries)):
+            l1.append(self.cal_cos_similarity(temp,diszzmatr[i]))
+        s1 = pdw.build_series(l1)
+        s2 = s1.sort_values(ascending=False)
+        diss = list(disseries[s2.iloc[s2.nonzero()].index].values)
+        dissprob = list(s2.iloc[s2.nonzero()].values)
+        for i in range(len(diss)):
+            d = pmw.find_one(distable,{'疾病名称':diss[i],'限定性别':{'$in':[gender]},'限定年龄':{'$in':[age]},'备注':{'$in':other}},fieldlist=['罕见程度','多发年龄','多发性别'])
+            if d:
+                if d['罕见程度'] == 1:
+                    dissprob[i] *= 0.1
+                if age not in d['多发年龄']:
+                    dissprob[i] *= 0.1
+                if gender not in d['多发性别']:
+                    dissprob[i] *= 0.1
+            else:
+                dissprob[i] = 0
+        df = pdw.build_df_from_dict({'疾病':diss,'概率':dissprob})    
+        return df.sort_values('概率',ascending=False)
+    def zz2ks(self, zzs,gender='男',age='4',other='普通'):
+        ksdicts = self._ksdicts
+        df = self.zz2disease(zzs,gender,age,other)
+        a = list(df['疾病'])
+        b = list(df['概率'])
+        genderdict = {'男':0,'女':1}
+        otherdict = {'普通':[0],'孕期':[1],'产褥期':[2],'孕妇及产褥期':[1,2]}
+        gender = genderdict[gender]
+        other = otherdict[other]
+        ksdict = dict()
+        for i in range(len(a)):
+            ks = self._distable.find_one({'疾病名称':a[i]})
+            if ks and '挂号的科室' in ks:
+                ks = ks['挂号的科室'].split()
+                for ii in ks:
+                    if ii in ksdicts and age in ksdicts[ii][1] and gender in ksdicts[ii][0] and other[0] in ksdicts[ii][2]:
+                        print(a[i],ks,b[i])
+                        if ii in ksdict:
+                            ksdict[ii] += b[i]
+                        else:
+                            ksdict[ii] = b[i]
+        if '血液科' in ksdict:
+            ksdict['血液科'] = ksdict['血液科'] / 6        
+        s = pdw.build_series(ksdict).sort_values(ascending=False)
+        s = s/((s.iloc[0]+1))
+        return s
