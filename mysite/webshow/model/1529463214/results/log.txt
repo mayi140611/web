@@ -1959,3 +1959,468 @@ batch_dim is deprecated, use batch_axis instead
 2018-08-27 13:26:56,110:DEBUG: Loading model from cache /tmp/jieba.cache
 2018-08-27 13:26:56,683:DEBUG: Loading model cost 0.573 seconds.
 2018-08-27 13:26:56,683:DEBUG: Prefix dict has been built succesfully.
+2018-08-27 13:40:59,788:ERROR: Internal Server Error: /daozhen/zz2ks/
+Traceback (most recent call last):
+  File "/home/ian/installed/anaconda3/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/ian/installed/anaconda3/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/ian/installed/anaconda3/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ian/code/github/web/mysite/daozhen/views.py", line 62, in zz2ks
+    index = int(p['body']['questions'])
+KeyError: 'questions'
+2018-08-27 13:43:00,723:ERROR: Internal Server Error: /daozhen/zz2ks/
+Traceback (most recent call last):
+  File "/home/ian/installed/anaconda3/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/ian/installed/anaconda3/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/ian/installed/anaconda3/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ian/code/github/web/mysite/daozhen/views.py", line 62, in zz2ks
+    index = int(p['body']['questions'])
+KeyError: 'questions'
+2018-08-27 13:45:26,671:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/rnn.py:417: calling reverse_sequence (from tensorflow.python.ops.array_ops) with seq_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+seq_dim is deprecated, use seq_axis instead
+2018-08-27 13:45:26,784:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/util/deprecation.py:432: calling reverse_sequence (from tensorflow.python.ops.array_ops) with batch_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+batch_dim is deprecated, use batch_axis instead
+2018-08-27 13:45:28,341:INFO: Restoring parameters from /home/ian/code/github/web/mysite/webshow/model/1529463214/checkpoints/model-1200
+2018-08-27 13:45:28,517:INFO: 'pattern' package not found; tag filters are not available for English
+2018-08-27 13:45:28,552:INFO: loading projection weights from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 13:45:28,552:DEBUG: {'kw': {}, 'mode': 'rb', 'uri': '/home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin'}
+2018-08-27 13:46:23,550:INFO: loaded (6115353, 64) matrix from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 13:52:23,647:DEBUG: Building prefix dict from the default dictionary ...
+2018-08-27 13:52:23,647:DEBUG: Loading model from cache /tmp/jieba.cache
+2018-08-27 13:52:24,215:DEBUG: Loading model cost 0.568 seconds.
+2018-08-27 13:52:24,216:DEBUG: Prefix dict has been built succesfully.
+2018-08-27 14:00:07,910:ERROR: Internal Server Error: /daozhen/zz2ks/
+Traceback (most recent call last):
+  File "/home/ian/installed/anaconda3/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/ian/installed/anaconda3/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/ian/installed/anaconda3/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ian/code/github/web/mysite/daozhen/views.py", line 63, in zz2ks
+    l1= model.zz2ks(zzlist)
+  File "/home/ian/code/github/web/mysite/model/daozhen/model180824.py", line 187, in zz2ks
+    df = self.zz2disease(zzs,gender,age,other)
+  File "/home/ian/code/github/web/mysite/model/daozhen/model180824.py", line 162, in zz2disease
+    temp = npw.build_zeros_array((1,len(zzseries)))[0]
+NameError: name 'npw' is not defined
+2018-08-27 14:02:08,083:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/rnn.py:417: calling reverse_sequence (from tensorflow.python.ops.array_ops) with seq_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+seq_dim is deprecated, use seq_axis instead
+2018-08-27 14:02:08,196:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/util/deprecation.py:432: calling reverse_sequence (from tensorflow.python.ops.array_ops) with batch_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+batch_dim is deprecated, use batch_axis instead
+2018-08-27 14:02:09,806:INFO: Restoring parameters from /home/ian/code/github/web/mysite/webshow/model/1529463214/checkpoints/model-1200
+2018-08-27 14:02:32,828:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/rnn.py:417: calling reverse_sequence (from tensorflow.python.ops.array_ops) with seq_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+seq_dim is deprecated, use seq_axis instead
+2018-08-27 14:02:32,937:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/util/deprecation.py:432: calling reverse_sequence (from tensorflow.python.ops.array_ops) with batch_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+batch_dim is deprecated, use batch_axis instead
+2018-08-27 14:02:34,490:INFO: Restoring parameters from /home/ian/code/github/web/mysite/webshow/model/1529463214/checkpoints/model-1200
+2018-08-27 14:02:34,665:INFO: 'pattern' package not found; tag filters are not available for English
+2018-08-27 14:02:34,701:INFO: loading projection weights from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 14:02:34,701:DEBUG: {'kw': {}, 'mode': 'rb', 'uri': '/home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin'}
+2018-08-27 14:03:27,685:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/rnn.py:417: calling reverse_sequence (from tensorflow.python.ops.array_ops) with seq_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+seq_dim is deprecated, use seq_axis instead
+2018-08-27 14:03:27,797:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/util/deprecation.py:432: calling reverse_sequence (from tensorflow.python.ops.array_ops) with batch_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+batch_dim is deprecated, use batch_axis instead
+2018-08-27 14:03:29,421:INFO: Restoring parameters from /home/ian/code/github/web/mysite/webshow/model/1529463214/checkpoints/model-1200
+2018-08-27 14:03:29,598:INFO: 'pattern' package not found; tag filters are not available for English
+2018-08-27 14:03:29,633:INFO: loading projection weights from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 14:03:29,634:DEBUG: {'kw': {}, 'mode': 'rb', 'uri': '/home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin'}
+2018-08-27 14:04:26,492:INFO: loaded (6115353, 64) matrix from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 14:24:22,244:DEBUG: Building prefix dict from the default dictionary ...
+2018-08-27 14:24:22,244:DEBUG: Loading model from cache /tmp/jieba.cache
+2018-08-27 14:24:22,825:DEBUG: Loading model cost 0.581 seconds.
+2018-08-27 14:24:22,825:DEBUG: Prefix dict has been built succesfully.
+2018-08-27 14:24:45,097:ERROR: Internal Server Error: /daozhen/zz2ks/
+Traceback (most recent call last):
+  File "/home/ian/installed/anaconda3/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/ian/installed/anaconda3/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/ian/installed/anaconda3/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ian/code/github/web/mysite/daozhen/views.py", line 64, in zz2ks
+    l1= model.zz2ks(zzlist)
+  File "/home/ian/code/github/web/mysite/model/daozhen/model180824.py", line 188, in zz2ks
+    df = self.zz2disease(zzs,gender,age,other)
+  File "/home/ian/code/github/web/mysite/model/daozhen/model180824.py", line 174, in zz2disease
+    d = pmw.find_one(distable,{'疾病名称':diss[i],'限定性别':{'$in':[gender]},'限定年龄':{'$in':[age]},'备注':{'$in':other}},fieldlist=['罕见程度','多发年龄','多发性别'])
+NameError: name 'distable' is not defined
+2018-08-27 14:26:01,052:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/rnn.py:417: calling reverse_sequence (from tensorflow.python.ops.array_ops) with seq_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+seq_dim is deprecated, use seq_axis instead
+2018-08-27 14:26:01,159:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/util/deprecation.py:432: calling reverse_sequence (from tensorflow.python.ops.array_ops) with batch_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+batch_dim is deprecated, use batch_axis instead
+2018-08-27 14:26:02,716:INFO: Restoring parameters from /home/ian/code/github/web/mysite/webshow/model/1529463214/checkpoints/model-1200
+2018-08-27 14:26:02,879:INFO: 'pattern' package not found; tag filters are not available for English
+2018-08-27 14:26:02,916:INFO: loading projection weights from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 14:26:02,916:DEBUG: {'kw': {}, 'mode': 'rb', 'uri': '/home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin'}
+2018-08-27 14:26:59,750:INFO: loaded (6115353, 64) matrix from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 14:27:33,168:DEBUG: Building prefix dict from the default dictionary ...
+2018-08-27 14:27:33,168:DEBUG: Loading model from cache /tmp/jieba.cache
+2018-08-27 14:27:33,758:DEBUG: Loading model cost 0.590 seconds.
+2018-08-27 14:27:33,758:DEBUG: Prefix dict has been built succesfully.
+2018-08-27 14:27:56,504:ERROR: Internal Server Error: /daozhen/zz2ks/
+Traceback (most recent call last):
+  File "/home/ian/installed/anaconda3/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/ian/installed/anaconda3/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/ian/installed/anaconda3/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ian/code/github/web/mysite/daozhen/views.py", line 64, in zz2ks
+    l1= model.zz2ks(zzlist)
+  File "/home/ian/code/github/web/mysite/model/daozhen/model180824.py", line 188, in zz2ks
+    df = self.zz2disease(zzs,gender,age,other)
+  File "/home/ian/code/github/web/mysite/model/daozhen/model180824.py", line 174, in zz2disease
+    d = pmw.find_one(self._distable,{'疾病名称':diss[i],'限定性别':{'$in':[gender]},'限定年龄':{'$in':[age]},'备注':{'$in':other}},fieldlist=['罕见程度','多发年龄','多发性别'])
+  File "/home/ian/code/github/utils/pymongo_wrapper.py", line 60, in find_one
+    return collection.find_one(conditions, d)
+AttributeError: 'dict' object has no attribute 'find_one'
+2018-08-27 14:30:59,741:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/rnn.py:417: calling reverse_sequence (from tensorflow.python.ops.array_ops) with seq_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+seq_dim is deprecated, use seq_axis instead
+2018-08-27 14:30:59,854:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/util/deprecation.py:432: calling reverse_sequence (from tensorflow.python.ops.array_ops) with batch_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+batch_dim is deprecated, use batch_axis instead
+2018-08-27 14:31:01,454:INFO: Restoring parameters from /home/ian/code/github/web/mysite/webshow/model/1529463214/checkpoints/model-1200
+2018-08-27 14:31:01,626:INFO: 'pattern' package not found; tag filters are not available for English
+2018-08-27 14:31:01,662:INFO: loading projection weights from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 14:31:01,662:DEBUG: {'kw': {}, 'mode': 'rb', 'uri': '/home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin'}
+2018-08-27 14:31:56,427:INFO: loaded (6115353, 64) matrix from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 14:32:30,106:DEBUG: Building prefix dict from the default dictionary ...
+2018-08-27 14:32:30,106:DEBUG: Loading model from cache /tmp/jieba.cache
+2018-08-27 14:32:30,685:DEBUG: Loading model cost 0.579 seconds.
+2018-08-27 14:32:30,685:DEBUG: Prefix dict has been built succesfully.
+2018-08-27 14:32:52,796:ERROR: Internal Server Error: /daozhen/zz2ks/
+Traceback (most recent call last):
+  File "/home/ian/installed/anaconda3/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/ian/installed/anaconda3/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/ian/installed/anaconda3/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ian/code/github/web/mysite/daozhen/views.py", line 64, in zz2ks
+    l1= model.zz2ks(zzlist)
+  File "/home/ian/code/github/web/mysite/model/daozhen/model180824.py", line 210, in zz2ks
+    s = s/((s.iloc[0]+1))
+  File "/home/ian/installed/anaconda3/lib/python3.6/site-packages/pandas/core/indexing.py", line 1478, in __getitem__
+    return self._getitem_axis(maybe_callable, axis=axis)
+  File "/home/ian/installed/anaconda3/lib/python3.6/site-packages/pandas/core/indexing.py", line 2102, in _getitem_axis
+    self._validate_integer(key, axis)
+  File "/home/ian/installed/anaconda3/lib/python3.6/site-packages/pandas/core/indexing.py", line 2009, in _validate_integer
+    raise IndexError("single positional indexer is out-of-bounds")
+IndexError: single positional indexer is out-of-bounds
+2018-08-27 14:34:13,014:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/rnn.py:417: calling reverse_sequence (from tensorflow.python.ops.array_ops) with seq_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+seq_dim is deprecated, use seq_axis instead
+2018-08-27 14:34:13,124:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/util/deprecation.py:432: calling reverse_sequence (from tensorflow.python.ops.array_ops) with batch_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+batch_dim is deprecated, use batch_axis instead
+2018-08-27 14:34:14,693:INFO: Restoring parameters from /home/ian/code/github/web/mysite/webshow/model/1529463214/checkpoints/model-1200
+2018-08-27 14:34:14,865:INFO: 'pattern' package not found; tag filters are not available for English
+2018-08-27 14:34:14,901:INFO: loading projection weights from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 14:34:14,902:DEBUG: {'kw': {}, 'mode': 'rb', 'uri': '/home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin'}
+2018-08-27 14:35:10,161:INFO: loaded (6115353, 64) matrix from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 14:36:41,535:DEBUG: Building prefix dict from the default dictionary ...
+2018-08-27 14:36:41,535:DEBUG: Loading model from cache /tmp/jieba.cache
+2018-08-27 14:36:42,111:DEBUG: Loading model cost 0.576 seconds.
+2018-08-27 14:36:42,112:DEBUG: Prefix dict has been built succesfully.
+2018-08-27 14:37:04,331:ERROR: Internal Server Error: /daozhen/zz2ks/
+Traceback (most recent call last):
+  File "/home/ian/installed/anaconda3/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/ian/installed/anaconda3/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/ian/installed/anaconda3/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ian/code/github/web/mysite/daozhen/views.py", line 64, in zz2ks
+    l1= model.zz2ks(zzlist)
+  File "/home/ian/code/github/web/mysite/model/daozhen/model180824.py", line 210, in zz2ks
+    if s:
+  File "/home/ian/installed/anaconda3/lib/python3.6/site-packages/pandas/core/generic.py", line 1573, in __nonzero__
+    .format(self.__class__.__name__))
+ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+2018-08-27 14:40:52,050:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/rnn.py:417: calling reverse_sequence (from tensorflow.python.ops.array_ops) with seq_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+seq_dim is deprecated, use seq_axis instead
+2018-08-27 14:40:52,166:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/util/deprecation.py:432: calling reverse_sequence (from tensorflow.python.ops.array_ops) with batch_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+batch_dim is deprecated, use batch_axis instead
+2018-08-27 14:40:53,830:INFO: Restoring parameters from /home/ian/code/github/web/mysite/webshow/model/1529463214/checkpoints/model-1200
+2018-08-27 14:40:54,006:INFO: 'pattern' package not found; tag filters are not available for English
+2018-08-27 14:40:54,043:INFO: loading projection weights from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 14:40:54,043:DEBUG: {'kw': {}, 'mode': 'rb', 'uri': '/home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin'}
+2018-08-27 14:41:49,427:INFO: loaded (6115353, 64) matrix from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 14:42:15,437:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/rnn.py:417: calling reverse_sequence (from tensorflow.python.ops.array_ops) with seq_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+seq_dim is deprecated, use seq_axis instead
+2018-08-27 14:42:15,549:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/util/deprecation.py:432: calling reverse_sequence (from tensorflow.python.ops.array_ops) with batch_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+batch_dim is deprecated, use batch_axis instead
+2018-08-27 14:42:17,130:INFO: Restoring parameters from /home/ian/code/github/web/mysite/webshow/model/1529463214/checkpoints/model-1200
+2018-08-27 14:42:17,302:INFO: 'pattern' package not found; tag filters are not available for English
+2018-08-27 14:42:17,338:INFO: loading projection weights from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 14:42:17,338:DEBUG: {'kw': {}, 'mode': 'rb', 'uri': '/home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin'}
+2018-08-27 14:43:12,280:INFO: loaded (6115353, 64) matrix from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 14:47:30,322:DEBUG: Building prefix dict from the default dictionary ...
+2018-08-27 14:47:30,323:DEBUG: Loading model from cache /tmp/jieba.cache
+2018-08-27 14:47:30,901:DEBUG: Loading model cost 0.579 seconds.
+2018-08-27 14:47:30,903:DEBUG: Prefix dict has been built succesfully.
+2018-08-27 14:57:01,629:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/rnn.py:417: calling reverse_sequence (from tensorflow.python.ops.array_ops) with seq_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+seq_dim is deprecated, use seq_axis instead
+2018-08-27 14:57:01,740:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/util/deprecation.py:432: calling reverse_sequence (from tensorflow.python.ops.array_ops) with batch_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+batch_dim is deprecated, use batch_axis instead
+2018-08-27 14:57:03,320:INFO: Restoring parameters from /home/ian/code/github/web/mysite/webshow/model/1529463214/checkpoints/model-1200
+2018-08-27 14:57:03,492:INFO: 'pattern' package not found; tag filters are not available for English
+2018-08-27 14:57:03,527:INFO: loading projection weights from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 14:57:03,527:DEBUG: {'kw': {}, 'mode': 'rb', 'uri': '/home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin'}
+2018-08-27 14:57:57,614:INFO: loaded (6115353, 64) matrix from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 15:11:17,158:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/rnn.py:417: calling reverse_sequence (from tensorflow.python.ops.array_ops) with seq_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+seq_dim is deprecated, use seq_axis instead
+2018-08-27 15:11:17,267:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/util/deprecation.py:432: calling reverse_sequence (from tensorflow.python.ops.array_ops) with batch_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+batch_dim is deprecated, use batch_axis instead
+2018-08-27 15:11:18,983:INFO: Restoring parameters from /home/ian/code/github/web/mysite/webshow/model/1529463214/checkpoints/model-1200
+2018-08-27 15:11:19,158:INFO: 'pattern' package not found; tag filters are not available for English
+2018-08-27 15:11:19,194:INFO: loading projection weights from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 15:11:19,195:DEBUG: {'kw': {}, 'mode': 'rb', 'uri': '/home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin'}
+2018-08-27 15:12:16,359:INFO: loaded (6115353, 64) matrix from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 15:12:41,456:DEBUG: Building prefix dict from the default dictionary ...
+2018-08-27 15:12:41,457:DEBUG: Loading model from cache /tmp/jieba.cache
+2018-08-27 15:12:42,030:DEBUG: Loading model cost 0.574 seconds.
+2018-08-27 15:12:42,030:DEBUG: Prefix dict has been built succesfully.
+2018-08-27 15:19:20,416:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/rnn.py:417: calling reverse_sequence (from tensorflow.python.ops.array_ops) with seq_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+seq_dim is deprecated, use seq_axis instead
+2018-08-27 15:19:20,527:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/util/deprecation.py:432: calling reverse_sequence (from tensorflow.python.ops.array_ops) with batch_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+batch_dim is deprecated, use batch_axis instead
+2018-08-27 15:19:22,171:INFO: Restoring parameters from /home/ian/code/github/web/mysite/webshow/model/1529463214/checkpoints/model-1200
+2018-08-27 15:19:22,343:INFO: 'pattern' package not found; tag filters are not available for English
+2018-08-27 15:19:22,380:INFO: loading projection weights from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 15:19:22,380:DEBUG: {'kw': {}, 'mode': 'rb', 'uri': '/home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin'}
+2018-08-27 15:20:18,415:INFO: loaded (6115353, 64) matrix from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 15:23:16,876:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/rnn.py:417: calling reverse_sequence (from tensorflow.python.ops.array_ops) with seq_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+seq_dim is deprecated, use seq_axis instead
+2018-08-27 15:23:16,991:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/util/deprecation.py:432: calling reverse_sequence (from tensorflow.python.ops.array_ops) with batch_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+batch_dim is deprecated, use batch_axis instead
+2018-08-27 15:23:18,551:INFO: Restoring parameters from /home/ian/code/github/web/mysite/webshow/model/1529463214/checkpoints/model-1200
+2018-08-27 15:23:18,719:INFO: 'pattern' package not found; tag filters are not available for English
+2018-08-27 15:23:18,757:INFO: loading projection weights from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 15:23:18,757:DEBUG: {'kw': {}, 'mode': 'rb', 'uri': '/home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin'}
+2018-08-27 15:24:15,013:INFO: loaded (6115353, 64) matrix from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 15:29:20,577:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/rnn.py:417: calling reverse_sequence (from tensorflow.python.ops.array_ops) with seq_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+seq_dim is deprecated, use seq_axis instead
+2018-08-27 15:29:20,689:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/util/deprecation.py:432: calling reverse_sequence (from tensorflow.python.ops.array_ops) with batch_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+batch_dim is deprecated, use batch_axis instead
+2018-08-27 15:29:22,394:INFO: Restoring parameters from /home/ian/code/github/web/mysite/webshow/model/1529463214/checkpoints/model-1200
+2018-08-27 15:29:22,559:INFO: 'pattern' package not found; tag filters are not available for English
+2018-08-27 15:29:22,595:INFO: loading projection weights from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 15:29:22,596:DEBUG: {'kw': {}, 'mode': 'rb', 'uri': '/home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin'}
+2018-08-27 15:30:20,256:INFO: loaded (6115353, 64) matrix from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 15:35:25,720:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/rnn.py:417: calling reverse_sequence (from tensorflow.python.ops.array_ops) with seq_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+seq_dim is deprecated, use seq_axis instead
+2018-08-27 15:35:25,830:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/util/deprecation.py:432: calling reverse_sequence (from tensorflow.python.ops.array_ops) with batch_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+batch_dim is deprecated, use batch_axis instead
+2018-08-27 15:35:27,421:INFO: Restoring parameters from /home/ian/code/github/web/mysite/webshow/model/1529463214/checkpoints/model-1200
+2018-08-27 15:35:27,595:INFO: 'pattern' package not found; tag filters are not available for English
+2018-08-27 15:35:27,631:INFO: loading projection weights from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 15:35:27,632:DEBUG: {'kw': {}, 'mode': 'rb', 'uri': '/home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin'}
+2018-08-27 15:36:05,327:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/rnn.py:417: calling reverse_sequence (from tensorflow.python.ops.array_ops) with seq_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+seq_dim is deprecated, use seq_axis instead
+2018-08-27 15:36:05,438:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/util/deprecation.py:432: calling reverse_sequence (from tensorflow.python.ops.array_ops) with batch_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+batch_dim is deprecated, use batch_axis instead
+2018-08-27 15:36:07,163:INFO: Restoring parameters from /home/ian/code/github/web/mysite/webshow/model/1529463214/checkpoints/model-1200
+2018-08-27 15:36:07,339:INFO: 'pattern' package not found; tag filters are not available for English
+2018-08-27 15:36:07,376:INFO: loading projection weights from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 15:36:07,376:DEBUG: {'kw': {}, 'mode': 'rb', 'uri': '/home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin'}
+2018-08-27 15:37:03,059:INFO: loaded (6115353, 64) matrix from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 15:37:30,634:DEBUG: Building prefix dict from the default dictionary ...
+2018-08-27 15:37:30,634:DEBUG: Loading model from cache /tmp/jieba.cache
+2018-08-27 15:37:31,210:DEBUG: Loading model cost 0.576 seconds.
+2018-08-27 15:37:31,210:DEBUG: Prefix dict has been built succesfully.
+2018-08-27 15:38:00,990:ERROR: Internal Server Error: /daozhen/zz2ks/
+Traceback (most recent call last):
+  File "/home/ian/installed/anaconda3/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/ian/installed/anaconda3/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/ian/installed/anaconda3/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ian/code/github/web/mysite/daozhen/views.py", line 67, in zz2ks
+    r = ['{i}:{n}'.format(i,n) for i,n in l1.items()]
+  File "/home/ian/code/github/web/mysite/daozhen/views.py", line 67, in <listcomp>
+    r = ['{i}:{n}'.format(i,n) for i,n in l1.items()]
+KeyError: 'i'
+2018-08-27 15:40:43,809:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/rnn.py:417: calling reverse_sequence (from tensorflow.python.ops.array_ops) with seq_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+seq_dim is deprecated, use seq_axis instead
+2018-08-27 15:40:43,923:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/util/deprecation.py:432: calling reverse_sequence (from tensorflow.python.ops.array_ops) with batch_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+batch_dim is deprecated, use batch_axis instead
+2018-08-27 15:40:45,577:INFO: Restoring parameters from /home/ian/code/github/web/mysite/webshow/model/1529463214/checkpoints/model-1200
+2018-08-27 15:40:45,754:INFO: 'pattern' package not found; tag filters are not available for English
+2018-08-27 15:40:45,791:INFO: loading projection weights from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 15:40:45,791:DEBUG: {'kw': {}, 'mode': 'rb', 'uri': '/home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin'}
+2018-08-27 15:41:42,439:INFO: loaded (6115353, 64) matrix from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 15:43:49,277:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/rnn.py:417: calling reverse_sequence (from tensorflow.python.ops.array_ops) with seq_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+seq_dim is deprecated, use seq_axis instead
+2018-08-27 15:43:49,390:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/util/deprecation.py:432: calling reverse_sequence (from tensorflow.python.ops.array_ops) with batch_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+batch_dim is deprecated, use batch_axis instead
+2018-08-27 15:43:51,034:INFO: Restoring parameters from /home/ian/code/github/web/mysite/webshow/model/1529463214/checkpoints/model-1200
+2018-08-27 15:43:51,206:INFO: 'pattern' package not found; tag filters are not available for English
+2018-08-27 15:43:51,242:INFO: loading projection weights from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 15:43:51,242:DEBUG: {'kw': {}, 'mode': 'rb', 'uri': '/home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin'}
+2018-08-27 15:44:48,961:INFO: loaded (6115353, 64) matrix from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 17:50:25,648:DEBUG: Building prefix dict from the default dictionary ...
+2018-08-27 17:50:25,648:DEBUG: Loading model from cache /tmp/jieba.cache
+2018-08-27 17:50:26,214:DEBUG: Loading model cost 0.566 seconds.
+2018-08-27 17:50:26,214:DEBUG: Prefix dict has been built succesfully.
+2018-08-27 18:46:21,290:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/rnn.py:417: calling reverse_sequence (from tensorflow.python.ops.array_ops) with seq_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+seq_dim is deprecated, use seq_axis instead
+2018-08-27 18:46:21,399:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/util/deprecation.py:432: calling reverse_sequence (from tensorflow.python.ops.array_ops) with batch_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+batch_dim is deprecated, use batch_axis instead
+2018-08-27 18:46:23,028:INFO: Restoring parameters from /home/ian/code/github/web/mysite/webshow/model/1529463214/checkpoints/model-1200
+2018-08-27 18:46:23,184:INFO: 'pattern' package not found; tag filters are not available for English
+2018-08-27 18:46:23,221:INFO: loading projection weights from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 18:46:23,221:DEBUG: {'kw': {}, 'mode': 'rb', 'uri': '/home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin'}
+2018-08-27 18:47:17,669:INFO: loaded (6115353, 64) matrix from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 18:48:50,989:DEBUG: Building prefix dict from the default dictionary ...
+2018-08-27 18:48:50,989:DEBUG: Loading model from cache /tmp/jieba.cache
+2018-08-27 18:48:51,578:DEBUG: Loading model cost 0.589 seconds.
+2018-08-27 18:48:51,579:DEBUG: Prefix dict has been built succesfully.
+2018-08-27 19:00:16,533:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/rnn.py:417: calling reverse_sequence (from tensorflow.python.ops.array_ops) with seq_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+seq_dim is deprecated, use seq_axis instead
+2018-08-27 19:00:16,645:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/util/deprecation.py:432: calling reverse_sequence (from tensorflow.python.ops.array_ops) with batch_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+batch_dim is deprecated, use batch_axis instead
+2018-08-27 19:00:18,186:INFO: Restoring parameters from /home/ian/code/github/web/mysite/webshow/model/1529463214/checkpoints/model-1200
+2018-08-27 19:00:18,352:INFO: 'pattern' package not found; tag filters are not available for English
+2018-08-27 19:00:18,388:INFO: loading projection weights from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 19:00:18,388:DEBUG: {'kw': {}, 'mode': 'rb', 'uri': '/home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin'}
+2018-08-27 19:01:13,963:INFO: loaded (6115353, 64) matrix from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 19:02:05,839:DEBUG: Building prefix dict from the default dictionary ...
+2018-08-27 19:02:05,839:DEBUG: Loading model from cache /tmp/jieba.cache
+2018-08-27 19:02:06,407:DEBUG: Loading model cost 0.568 seconds.
+2018-08-27 19:02:06,408:DEBUG: Prefix dict has been built succesfully.
+2018-08-27 19:22:01,215:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/rnn.py:417: calling reverse_sequence (from tensorflow.python.ops.array_ops) with seq_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+seq_dim is deprecated, use seq_axis instead
+2018-08-27 19:22:01,328:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/util/deprecation.py:432: calling reverse_sequence (from tensorflow.python.ops.array_ops) with batch_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+batch_dim is deprecated, use batch_axis instead
+2018-08-27 19:22:02,900:INFO: Restoring parameters from /home/ian/code/github/web/mysite/webshow/model/1529463214/checkpoints/model-1200
+2018-08-27 19:22:03,072:INFO: 'pattern' package not found; tag filters are not available for English
+2018-08-27 19:22:03,107:INFO: loading projection weights from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 19:22:03,108:DEBUG: {'kw': {}, 'mode': 'rb', 'uri': '/home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin'}
+2018-08-27 19:23:00,465:INFO: loaded (6115353, 64) matrix from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 19:32:03,892:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/rnn.py:417: calling reverse_sequence (from tensorflow.python.ops.array_ops) with seq_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+seq_dim is deprecated, use seq_axis instead
+2018-08-27 19:32:04,005:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/util/deprecation.py:432: calling reverse_sequence (from tensorflow.python.ops.array_ops) with batch_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+batch_dim is deprecated, use batch_axis instead
+2018-08-27 19:32:05,557:INFO: Restoring parameters from /home/ian/code/github/web/mysite/webshow/model/1529463214/checkpoints/model-1200
+2018-08-27 19:32:05,734:INFO: 'pattern' package not found; tag filters are not available for English
+2018-08-27 19:32:05,770:INFO: loading projection weights from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 19:32:05,770:DEBUG: {'kw': {}, 'mode': 'rb', 'uri': '/home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin'}
+2018-08-27 19:33:00,325:INFO: loaded (6115353, 64) matrix from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 19:34:33,446:ERROR: Internal Server Error: /daozhen/getmhzz/
+Traceback (most recent call last):
+  File "/home/ian/installed/anaconda3/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/ian/installed/anaconda3/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/ian/installed/anaconda3/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ian/code/github/web/mysite/daozhen/views.py", line 19, in getmhzz
+    l = model.get_zzs(p['body']['questions'],gender,age,other)
+  File "/home/ian/code/github/web/mysite/model/daozhen/model180824.py", line 81, in get_zzs
+    other = otherdict[other]
+KeyError: ''
+2018-08-27 19:39:03,503:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/rnn.py:417: calling reverse_sequence (from tensorflow.python.ops.array_ops) with seq_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+seq_dim is deprecated, use seq_axis instead
+2018-08-27 19:39:03,618:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/util/deprecation.py:432: calling reverse_sequence (from tensorflow.python.ops.array_ops) with batch_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+batch_dim is deprecated, use batch_axis instead
+2018-08-27 19:39:05,179:INFO: Restoring parameters from /home/ian/code/github/web/mysite/webshow/model/1529463214/checkpoints/model-1200
+2018-08-27 19:39:05,350:INFO: 'pattern' package not found; tag filters are not available for English
+2018-08-27 19:39:05,386:INFO: loading projection weights from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 19:39:05,386:DEBUG: {'kw': {}, 'mode': 'rb', 'uri': '/home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin'}
+2018-08-27 19:40:02,364:INFO: loaded (6115353, 64) matrix from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 19:40:43,555:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/rnn.py:417: calling reverse_sequence (from tensorflow.python.ops.array_ops) with seq_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+seq_dim is deprecated, use seq_axis instead
+2018-08-27 19:40:43,669:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/util/deprecation.py:432: calling reverse_sequence (from tensorflow.python.ops.array_ops) with batch_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+batch_dim is deprecated, use batch_axis instead
+2018-08-27 19:40:45,220:INFO: Restoring parameters from /home/ian/code/github/web/mysite/webshow/model/1529463214/checkpoints/model-1200
+2018-08-27 19:40:45,391:INFO: 'pattern' package not found; tag filters are not available for English
+2018-08-27 19:40:45,427:INFO: loading projection weights from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 19:40:45,427:DEBUG: {'kw': {}, 'mode': 'rb', 'uri': '/home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin'}
+2018-08-27 19:41:42,977:INFO: loaded (6115353, 64) matrix from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 19:43:40,926:DEBUG: Building prefix dict from the default dictionary ...
+2018-08-27 19:43:40,926:DEBUG: Loading model from cache /tmp/jieba.cache
+2018-08-27 19:43:41,539:DEBUG: Loading model cost 0.612 seconds.
+2018-08-27 19:43:41,539:DEBUG: Prefix dict has been built succesfully.
+2018-08-27 19:52:22,406:ERROR: Internal Server Error: /daozhen/zz2ks/
+Traceback (most recent call last):
+  File "/home/ian/installed/anaconda3/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/ian/installed/anaconda3/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/ian/installed/anaconda3/lib/python3.6/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/ian/code/github/web/mysite/daozhen/views.py", line 81, in zz2ks
+    l1= model.zz2ks(zzlist,gender,age,other)
+  File "/home/ian/code/github/web/mysite/model/daozhen/model180824.py", line 193, in zz2ks
+    df = self.zz2disease(zzs,gender,age,other)
+  File "/home/ian/code/github/web/mysite/model/daozhen/model180824.py", line 164, in zz2disease
+    other = otherdict[other]
+KeyError: ''
+2018-08-27 19:53:29,388:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/rnn.py:417: calling reverse_sequence (from tensorflow.python.ops.array_ops) with seq_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+seq_dim is deprecated, use seq_axis instead
+2018-08-27 19:53:29,502:WARNING: From /home/ian/installed/anaconda3/lib/python3.6/site-packages/tensorflow/python/util/deprecation.py:432: calling reverse_sequence (from tensorflow.python.ops.array_ops) with batch_dim is deprecated and will be removed in a future version.
+Instructions for updating:
+batch_dim is deprecated, use batch_axis instead
+2018-08-27 19:53:31,048:INFO: Restoring parameters from /home/ian/code/github/web/mysite/webshow/model/1529463214/checkpoints/model-1200
+2018-08-27 19:53:31,218:INFO: 'pattern' package not found; tag filters are not available for English
+2018-08-27 19:53:31,254:INFO: loading projection weights from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 19:53:31,254:DEBUG: {'kw': {}, 'mode': 'rb', 'uri': '/home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin'}
+2018-08-27 19:54:27,252:INFO: loaded (6115353, 64) matrix from /home/ian/code/github/data/word2vec/news_12g_baidubaike_20g_novel_90g_embedding_64.bin
+2018-08-27 19:55:00,853:DEBUG: Building prefix dict from the default dictionary ...
+2018-08-27 19:55:00,853:DEBUG: Loading model from cache /tmp/jieba.cache
+2018-08-27 19:55:01,429:DEBUG: Loading model cost 0.576 seconds.
+2018-08-27 19:55:01,429:DEBUG: Prefix dict has been built succesfully.

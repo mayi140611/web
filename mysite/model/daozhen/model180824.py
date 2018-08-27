@@ -12,6 +12,7 @@ from utils.nlp.nlp_wrapper import nlp_wrapper as nlpw
 from utils.pandas_wrapper import pandas_wrapper as pdw
 from utils.pandas.dataframe_wrapper import dataframe_wrapper as dfw
 from utils.nlp.nlp_wrapper import nlp_wrapper as nlpw
+from utils.numpy_wrapper import numpy_wrapper as npw
 import re
 from math import sqrt
 
@@ -82,7 +83,7 @@ class model_wrapper(object):
         @gender: 男，女，孕妇，产褥期
         '''
         zzlist = self._zzlist
-        s1 = re.sub(r'[我你他很的,，。？！了么呢吗哦哈]|(感觉)|觉得|(非常)|(有点)','',s1)
+        s1 = re.sub(r'(感觉)|觉得|(非常)|(有点)|[我你他很的地和,，。？！了么呢吗哦哈啦]','',s1)
         s1 = re.sub(r'胳膊','上臂上肢前臂',s1)
         s1 = re.sub(r'小腿','小腿下肢',s1)
         s1 = re.sub(r'大腿','大腿下肢',s1)
@@ -99,6 +100,8 @@ class model_wrapper(object):
         s1 = re.sub(r'黑眼圈重','黑眼圈',s1)
         s1 = re.sub(r'想吐','恶心与呕吐',s1)
         s1 = re.sub(r'牙出血','牙龈出血',s1)
+        s1 = re.sub(r'肚子腹部[疼痛]','肚子疼',s1)
+        s1 = re.sub(r'全身疼痛','身痛',s1)
         print(s1)
         if s1 in zzlist:
             return s1
@@ -169,8 +172,11 @@ class model_wrapper(object):
         s2 = s1.sort_values(ascending=False)
         diss = list(disseries[s2.iloc[s2.nonzero()].index].values)
         dissprob = list(s2.iloc[s2.nonzero()].values)
+#         print('diss:',diss[:5])
+#         print('dissprob:',dissprob[:5])
         for i in range(len(diss)):
-            d = pmw.find_one(distable,{'疾病名称':diss[i],'限定性别':{'$in':[gender]},'限定年龄':{'$in':[age]},'备注':{'$in':other}},fieldlist=['罕见程度','多发年龄','多发性别'])
+            d = self._pmw.find_one(self._distable,{'疾病名称':diss[i],'限定性别':{'$in':[gender]},'限定年龄':{'$in':[age]},'备注':{'$in':other}},fieldlist=['罕见程度','多发年龄','多发性别'])
+#             print('d:',d)
             if d:
                 if d['罕见程度'] == 1:
                     dissprob[i] *= 0.1
@@ -185,6 +191,7 @@ class model_wrapper(object):
     def zz2ks(self, zzs,gender='男',age='4',other='普通'):
         ksdicts = self._ksdicts
         df = self.zz2disease(zzs,gender,age,other)
+        print('zz2dis',df.head())
         a = list(df['疾病'])
         b = list(df['概率'])
         genderdict = {'男':0,'女':1}
@@ -198,7 +205,7 @@ class model_wrapper(object):
                 ks = ks['挂号的科室'].split()
                 for ii in ks:
                     if ii in ksdicts and age in ksdicts[ii][1] and gender in ksdicts[ii][0] and other[0] in ksdicts[ii][2]:
-                        print(a[i],ks,b[i])
+#                         print(a[i],ks,b[i])
                         if ii in ksdict:
                             ksdict[ii] += b[i]
                         else:
@@ -206,5 +213,6 @@ class model_wrapper(object):
         if '血液科' in ksdict:
             ksdict['血液科'] = ksdict['血液科'] / 6        
         s = pdw.build_series(ksdict).sort_values(ascending=False)
-        s = s/((s.iloc[0]+1))
+        if not s.empty:
+            s = s/((s.iloc[0]+1))
         return s
