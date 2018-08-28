@@ -118,7 +118,7 @@ class model_wrapper(object):
 
     def zz2zz(self,zzlist1,gender='男',age='4',other='普通'):
         genderdict = {'男':0,'女':1}
-        otherdict = {'普通':[0],'孕妇':[1],'产褥期':[2],'孕妇及产褥期':[1,2]}
+        otherdict = {'普通':[0],'孕期':[1],'产褥期':[2],'孕期及产褥期':[1,2]}
         gender = genderdict[gender]
         other = otherdict[other]
         t = [self._zzshared_series_inv[i] for i in zzlist1 if i in self._zzshared_series_inv]
@@ -212,6 +212,8 @@ class model_wrapper(object):
                             ksdict[ii] = b[i]
         if '血液科' in ksdict:
             ksdict['血液科'] = ksdict['血液科'] / 6        
+        if '中医科' in ksdict:
+            ksdict['中医科'] = ksdict['中医科'] / 3        
         s = pdw.build_series(ksdict).sort_values(ascending=False)
         if not s.empty:
             s = s/((s.iloc[0]+1))
