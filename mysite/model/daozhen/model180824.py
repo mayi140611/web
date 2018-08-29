@@ -15,6 +15,7 @@ from utils.nlp.nlp_wrapper import nlp_wrapper as nlpw
 from utils.numpy_wrapper import numpy_wrapper as npw
 import re
 from math import sqrt
+from matplotlib.cbook import flatten
 
 class model_wrapper(object):
     def __init__(self): 
@@ -76,7 +77,7 @@ class model_wrapper(object):
         return list(dfw.sort_by_column(df,'e',ascending=False).loc[:,'zz'][:n].values)
     def get_zzs(self,s1,gender='男',age='4',other='普通'):
         genderdict = {'男':0,'女':1}
-        otherdict = {'普通':[0],'孕妇':[1],'产褥期':[2],'孕妇及产褥期':[1,2]}
+        otherdict = {'普通':[0],'孕期':[1],'产褥期':[2],'孕妇及产褥期':[1,2]}
         gender = genderdict[gender]
         other = otherdict[other]
         '''
@@ -102,10 +103,13 @@ class model_wrapper(object):
         s1 = re.sub(r'牙出血','牙龈出血',s1)
         s1 = re.sub(r'肚子腹部[疼痛]','肚子疼',s1)
         s1 = re.sub(r'全身疼痛','身痛',s1)
+        s1 = re.sub(r'头疼','头痛',s1)
         print(s1)
         if s1 in zzlist:
             return s1
-        ll = pd.Series(self.get_zzs_by_editdis(s1)+self.get_zzs_by_word2vec(s1)).unique()
+        a,b = self.get_zzs_by_editdis(s1,100), self.get_zzs_by_word2vec(s1,100)
+        c = list(flatten(zip(a,b)))
+        ll = pd.Series(c).unique()
         bwlist = self.get_buwei(s1)
         print(bwlist)
         if bwlist:
@@ -213,8 +217,12 @@ class model_wrapper(object):
         if '血液科' in ksdict:
             ksdict['血液科'] = ksdict['血液科'] / 6        
         if '中医科' in ksdict:
-            ksdict['中医科'] = ksdict['中医科'] / 3        
+            ksdict['中医科'] = ksdict['中医科'] / 3    
+            
         s = pdw.build_series(ksdict).sort_values(ascending=False)
         if not s.empty:
-            s = s/((s.iloc[0]+1))
+            s = s/((s.iloc[0]+1))        
+            if age in list('123'):
+                s['儿科'] = 1/2 + s.iloc[0]/2
+                return s.sort_values(ascending=False)
         return s
