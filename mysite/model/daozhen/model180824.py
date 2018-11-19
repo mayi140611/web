@@ -1,5 +1,3 @@
-import sys
-sys.path.append('/home/ian/code/github')
 import os
 import gensim
 import jieba
@@ -32,7 +30,7 @@ class model_wrapper(object):
         self._pmw = pmw()
         self._zztable = self._pmw.get_collection('jiankang39', 'zznew')
         self._distable = self._pmw.get_collection('jiankang39','diseases')
-        self._ksdicts = pkw.loadfromfile('/home/ian/code/data/daozhen/ksdict.pkl')
+        self._ksdicts = pkw.loadfromfile('/home/ian/code/github/web/mysite1/model/daozhen/data1/ksdict1.pkl')
         self._zzseries = pkw.loadfromfile('/home/ian/code/data/daozhen/zzseries.pkl')
         self._disseries = pkw.loadfromfile('/home/ian/code/data/daozhen/disseries.pkl')
         self._diszzmatr = pkw.loadfromfile('/home/ian/code/data/daozhen/diszzmatr.pkl')
@@ -84,7 +82,7 @@ class model_wrapper(object):
         @gender: 男，女，孕妇，产褥期
         '''
         zzlist = self._zzlist
-        s1 = re.sub(r'(感觉)|觉得|(非常)|(有点)|[我你他很的地和,，。？！了么呢吗哦哈啦]','',s1)
+        s1 = re.sub(r'(前几天)|(有点儿)|(有一点)|(有一些)|(感觉)|(晚上)|(早上)|(上午)|(中午)|(下午)|(凌晨)|(清晨)|(昨天)|(前天)|(感到)|觉得|(非常)|(应该)|(有点)|(有些)|(儿子)|(女儿)|(父亲)|(孙子)|(外孙)|[叔伯爸妈姐弟爷哥我你他很的地和有也,，。？！了么呢吗哦哈啦啊哇呵]','',s1)
         s1 = re.sub(r'胳膊','上臂上肢前臂',s1)
         s1 = re.sub(r'小腿','小腿下肢',s1)
         s1 = re.sub(r'大腿','大腿下肢',s1)
@@ -104,6 +102,16 @@ class model_wrapper(object):
         s1 = re.sub(r'肚子腹部[疼痛]','肚子疼',s1)
         s1 = re.sub(r'全身疼痛','身痛',s1)
         s1 = re.sub(r'头疼','头痛',s1)
+        s1 = re.sub(r'胳膊抬不起来','上肢无力',s1)
+        s1 = re.sub(r'脚麻','手足发麻',s1)
+        s1 = re.sub(r'嗓子疼','咽痛',s1)
+        s1 = re.sub(r'不爱吃东西','食欲不振',s1)
+        s1 = re.sub(r'不爱吃饭','食欲不振',s1)
+        s1 = re.sub(r'肚子腹部胀','腹胀',s1)
+        if age in list('123'):
+            if age == '1':
+                s1 = re.sub(r'哭闹','小儿哭闹不安',s1)
+            s1 = re.sub(r'挑食','儿童偏食',s1)
         print(s1)
         if s1 in zzlist:
             return s1
@@ -128,9 +136,11 @@ class model_wrapper(object):
         t = [self._zzshared_series_inv[i] for i in zzlist1 if i in self._zzshared_series_inv]
         if t:
             r = None
+            f = 0
             for i in t:
-                if not r:
+                if f == 0:
                     r = self._tongxianmatr[i]
+                    f = 1
                 else:
                     r = r + self._tongxianmatr[i]
                 s = pd.Series(list(r)).sort_values(ascending=False)
@@ -206,14 +216,16 @@ class model_wrapper(object):
         for i in range(len(a)):
             ks = self._distable.find_one({'疾病名称':a[i]})
             if ks and '挂号的科室' in ks:
-                ks = ks['挂号的科室'].split()
-                for ii in ks:
+#                 ks = ks['挂号的科室'].split()
+                for ii in ks['挂号的科室']:
                     if ii in ksdicts and age in ksdicts[ii][1] and gender in ksdicts[ii][0] and other[0] in ksdicts[ii][2]:
 #                         print(a[i],ks,b[i])
                         if ii in ksdict:
                             ksdict[ii] += b[i]
                         else:
                             ksdict[ii] = b[i]
+        if '传染科' in ksdict:
+            ksdict['传染科'] = ksdict['传染科'] / 6  
         if '血液科' in ksdict:
             ksdict['血液科'] = ksdict['血液科'] / 6        
         if '中医科' in ksdict:
